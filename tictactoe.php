@@ -1,17 +1,18 @@
 <?php
 
 session_start();
-if ( !isset($_SESSION["case1"]) || !isset($_SESSION["case2"]) || !isset($_SESSION["case3"]) || !isset($_SESSION["case4"]) || !isset($_SESSION["case5"]) || !isset($_SESSION["case6"]) || !isset($_SESSION["case7"]) || !isset($_SESSION["case8"]) || !isset($_SESSION["case9"]) ) {
-    $_SESSION["case1"] = "";
-    $_SESSION["case2"] = "";
-    $_SESSION["case3"] = "";
-    $_SESSION["case4"] = "";
-    $_SESSION["case5"] = "";
-    $_SESSION["case6"] = "";
-    $_SESSION["case7"] = "";
-    $_SESSION["case8"] = "";
-    $_SESSION["case9"] = "";
+
+if ( isset($_POST["restart"]) ) {
+    session_destroy();
+    header("Location: tictactoe.php");
 }
+
+if ( !isset($_SESSION["tab"]) ) {
+    $_SESSION["tab"] = array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+$tab = $_SESSION["tab"];
+// var_dump($tab);
 
 if ( !isset($_SESSION["tour"]) ) {
     $choix = array(1, 2);
@@ -20,17 +21,63 @@ if ( !isset($_SESSION["tour"]) ) {
 
 }
 
-include("game.php");
+if ( !isset($_SESSION["signechoix"]) ) {
+    $signes = array(1, 2);
+    shuffle($signes);
+    $_SESSION["signeia"] = $signes[0];
+    $_SESSION["signej"] = $signes[1];
+    $_SESSION["signechoix"] = "Ok";
+}
+
+$signej = $_SESSION["signej"];
+$signeia = $_SESSION["signeia"];
+
+if ( $signeia == 1 ) {
+    $symboleia = "x";
+}
+else {
+    $symboleia = "o";
+}
+
+if ( $signej == 1 ) {
+    $symbolej = "x";
+}
+else {
+    $symbolej = "o";
+}
+
+include("ia.php");
 
 $game = new Game();
-$game->gestionTourJoueur();
-$game->checkWin();
+$game->checkWin($signej, $signeia);
 
-if ( $_SESSION["tour"] == "2" ) {
-    $game->checkWinPossible();
-    $game->checkCounterPossible();
-    $game->gestionTourIA();
+// var_dump($game->checkWin($signej, $signeia));
+
+if ( $_SESSION["tour"] == 2 ) {
+    $game->checkWinPossible($signej, $signeia);
+    $game->checkCounterPossible($signej, $signeia);
+    $test = $game->ia($tab, $signeia);
+    if ( is_int($test) ) {
+        $_SESSION["tab"][$test] = $signeia;
+        $_SESSION["tour"] = 1;
+    }
 }
+
+elseif ( $_SESSION["tour"] == 1 ) {
+    $game->gestionTourJoueur($signej);
+}
+
+$tab = $_SESSION["tab"];
+
+// var_dump($test);
+// var_dump($_SESSION["tour"]);
+// var_dump($_SESSION["gocheckcase"]);
+// var_dump($game->checkWin($signej, $signeia));
+// var_dump($_SESSION["tab"]);
+
+// echo $signej;
+
+// echo $_SESSION["tab"][0];
 
 ?>
 
@@ -41,6 +88,18 @@ if ( $_SESSION["tour"] == "2" ) {
     <meta charset="utf-8">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/style.css">
+    <?php
+        if ( $symbolej == "x" ) {
+            ?>
+            <link rel="stylesheet" href="css/croix.css">
+            <?php
+        }
+        if ( $symbolej == "o" ) {
+            ?>
+            <link rel="stylesheet" href="css/rond.css">
+            <?php
+        }
+        ?>
 </head>
 <body>
     <main>
@@ -48,46 +107,46 @@ if ( $_SESSION["tour"] == "2" ) {
         <form class="grille" method="post" action="tictactoe.php">
             <section class="row">
             <?php
-            if ( $_SESSION["case1"] != "" ) {
-                if ( $_SESSION["case1"] == "o" ) {
-                    echo "<section class=\"o\">o</section>";
+            if ( $tab[0] != 0 ) {
+                if ( $tab[0] == $signeia ) {
+                    echo "<section class=\"$symboleia\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x\">x</section>";
+                    echo "<section class=\"$symbolej\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case1"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[0] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn" type="submit" value="1" name="1"><?php
             }
-            elseif ( $_SESSION["case1"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[0] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
-            if ( $_SESSION["case2"] != "" ) {
-                if ( $_SESSION["case2"] == "o" ) {
-                    echo "<section class=\"o deux\">o</section>";
+            if ( $tab[1] != 0 ) {
+                if ( $tab[1] == $signeia ) {
+                    echo "<section class=\"$symboleia deux\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x deux\">x</section>";
+                    echo "<section class=\"$symbolej deux\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case2"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[1] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn deux" type="submit" value="2" name="2"><?php
             }
-            elseif ( $_SESSION["case2"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[1] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
-            if ( $_SESSION["case3"] != "" ) {
-                if ( $_SESSION["case3"] == "o" ) {
-                    echo "<section class=\"o\">o</section>";
+            if ( $tab[2] != 0 ) {
+                if ( $tab[2] == $signeia ) {
+                    echo "<section class=\"$symboleia\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x\">x</section>";
+                    echo "<section class=\"$symbolej\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case3"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[2] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn" type="submit" value="3" name="3"><?php
             }
-            elseif ( $_SESSION["case3"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[2] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
             ?>
@@ -96,46 +155,46 @@ if ( $_SESSION["tour"] == "2" ) {
             <section class="row">
 
             <?php
-            if ( $_SESSION["case4"] != "" ) {
-                if ( $_SESSION["case4"] == "o" ) {
-                    echo "<section class=\"o quatre\">o</section>";
+            if ( $tab[3] != 0 ) {
+                if ( $tab[3] == $signeia ) {
+                    echo "<section class=\"$symboleia quatre\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x quatre\">x</section>";
+                    echo "<section class=\"$symbolej quatre\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case4"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[3] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn quatre" type="submit" value="4" name="4"><?php
             }
-            elseif ( $_SESSION["case4"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[3] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
-            if ( $_SESSION["case5"] != "" ) {
-                if ( $_SESSION["case5"] == "o" ) {
-                    echo "<section class=\"o cinq\">o</section>";
+            if ( $tab[4] != 0 ) {
+                if ( $tab[4] == $signeia ) {
+                    echo "<section class=\"$symboleia cinq\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x cinq\">x</section>";
+                    echo "<section class=\"$symbolej cinq\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case5"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[4] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn cinq" type="submit" value="5" name="5"><?php
             }
-            elseif ( $_SESSION["case5"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[4] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
-            if ( $_SESSION["case6"] != "" ) {
-                if ( $_SESSION["case6"] == "o" ) {
-                    echo "<section class=\"o six\">o</section>";
+            if ( $tab[5] != 0 ) {
+                if ( $tab[5] == $signeia ) {
+                    echo "<section class=\"$symboleia six\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x six\">x</section>";
+                    echo "<section class=\"$symbolej six\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case6"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[5] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn six" type="submit" value="6" name="6"><?php
             }
-            elseif ( $_SESSION["case6"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[5] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
             ?>
@@ -144,54 +203,54 @@ if ( $_SESSION["tour"] == "2" ) {
             <section class="row">
 
             <?php
-            if ( $_SESSION["case7"] != "" ) {
-                if ( $_SESSION["case7"] == "o" ) {
-                    echo "<section class=\"o\">o</section>";
+            if ( $tab[6] != 0 ) {
+                if ( $tab[6] == $signeia ) {
+                    echo "<section class=\"$symboleia\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x\">x</section>";
+                    echo "<section class=\"$symbolej\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case7"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[6] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn" type="submit" value="7" name="7"><?php
             }
-            elseif ( $_SESSION["case7"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[6] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
-            if ( $_SESSION["case8"] != "" ) {
-                if ( $_SESSION["case8"] == "o" ) {
-                    echo "<section class=\"o huit\">o</section>";
+            if ( $tab[7] != 0 ) {
+                if ( $tab[7] == $signeia ) {
+                    echo "<section class=\"$symboleia huit\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x huit\">x</section>";
+                    echo "<section class=\"$symbolej huit\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case8"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[7] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn huit" type="submit" value="8" name="8"><?php
             }
-            elseif ( $_SESSION["case8"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[7] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
-            if ( $_SESSION["case9"] != "" ) {
-                if ( $_SESSION["case9"] == "o" ) {
-                    echo "<section class=\"o\">o</section>";
+            if ( $tab[8] != 0 ) {
+                if ( $tab[8] == $signeia ) {
+                    echo "<section class=\"$symboleia\">o</section>";
                 }
                 else {
-                    echo "<section class=\"x\">x</section>";
+                    echo "<section class=\"$symbolej\">x</section>";
                 }
             }
-            elseif ( $_SESSION["case9"] == "" && $game->checkWin()[0] == false ) {
+            elseif ( $tab[8] == 0 && $game->checkWin($signej, $signeia)[0] == false ) {
                 ?><input class="btn" type="submit" value="9" name="9"><?php
             }
-            elseif ( $_SESSION["case9"] == "" && $game->checkWin()[0] == true ) {
+            elseif ( $tab[8] == 0 && $game->checkWin($signej, $signeia)[0] == true ) {
                 echo "<section></section>";
             }
     ?>
             </section>
         </form>
         <?php
-        if ( $game->checkWin()[0] == true ) {
-            if ( $game->checkWin()[1] == "x" ) {
+        if ( $game->checkWin($signej, $signeia)[0] == true ) {
+            if ( $game->checkWin($signej, $signeia)[1] == "$signej" ) {
                 echo "<p class=\"blue\">Vous avez gagné !</p>";
                 ?>
                 <form action="tictactoe.php" method="post">
@@ -199,7 +258,7 @@ if ( $_SESSION["tour"] == "2" ) {
                 </form>
                 <?php
             }
-            elseif ( $game->checkWin()[1] == "draw" ) {
+            elseif ( $game->checkWin($signej, $signeia)[1] == "draw" ) {
                 echo "<p class=\"orange\">EGALITE</p>";
                 ?>
                 <form action="tictactoe.php" method="post">
@@ -215,10 +274,6 @@ if ( $_SESSION["tour"] == "2" ) {
                 </form>
                 <?php
             }
-        }
-        if ( isset($_POST["restart"]) ) {
-            session_destroy();
-            header("Location: tictactoe.php");
         }
         ?>
     </main>

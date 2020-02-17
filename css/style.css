@@ -103,15 +103,6 @@ p {
     background-image: url(../img/cross.png);
 }
 
-.btn {
-    border: none;
-    background: none;
-}
-
-.btn:hover {
-    background-image: url(../img/crossh.png);
-}
-
 .grille {
     display: flex;
     flex-direction: column;
