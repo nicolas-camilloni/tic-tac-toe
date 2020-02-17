@@ -1,0 +1,8 @@
+.btn {
+    border: none;
+    background: none;
+}
+
+.btn:hover {
+    background-image: url(../img/doth.png);
+}
