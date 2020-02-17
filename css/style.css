@@ -1,0 +1,124 @@
+@font-face {
+	font-family: "PlayMeGames-Demo";
+	font-style: normal;
+	font-weight: normal;
+	src: local('PlayMeGames-Demo'), url('../fonts/PlayMeGames-Demo.otf') format('opentype');
+}
+
+@font-face {
+	font-family: "Comfortaa-VariableFont_wght";
+	font-style: normal;
+	font-weight: normal;
+	src: local('Comfortaa-VariableFont_wght'), url('../fonts/Comfortaa-VariableFont_wght.ttf') format('truetype');
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    height: 100vh;
+    align-items: center;
+    font-family: "Comfortaa-VariableFont_wght";
+}
+
+body {
+    margin: 0;
+    background-image: url(../img/bg.jpg);
+    background-size: 100%;
+}
+
+.red {
+    color: #ff615f;
+}
+
+.blue {
+    color: #3ec5f3;
+}
+
+.orange {
+    color: #ffd900;
+}
+
+h1 {
+    margin: 10px;
+    font-size: 64px;
+    font-family: "Comfortaa-VariableFont_wght";
+	text-shadow: 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff, -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff;
+}
+
+p {
+    margin: 40px 0 0 0;
+    font-size: 28px;
+}
+
+.btnrestart {
+    margin: 40px 0 0 0;
+    background: none;
+    border: 4px solid white;
+    border-radius: 50px;
+    color: white;
+    height: 84px;
+    width: 364px;
+    font-family: "Comfortaa-VariableFont_wght";
+    font-size: 24px;
+    background-color: #3ec5f3;
+    background-image: linear-gradient(to right, #ff615f, rgba(0, 0, 0, 0));
+}
+
+.btnrestart:hover {
+    background-color: #ff615f;
+    background-image: linear-gradient(to right, #3ec5f3, rgba(0, 0, 0, 0));
+	transition: background-color 0.25s ease-in-out;
+}
+
+.btnrestart:not(:hover) {
+    background-color: #3ec5f3;
+    background-image: linear-gradient(to right, #ff615f, rgba(0, 0, 0, 0));
+	transition: background-color 0.25s ease-in-out;
+}
+
+.row section {
+    width: 220px;
+    height: 220px;
+}
+
+.o, .x, .btn {
+    height: 220px;
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 0px;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    padding: 0;
+}
+
+.o {
+    background-image: url(../img/dot.png);
+}
+
+.x {
+    background-image: url(../img/cross.png);
+}
+
+.btn {
+    border: none;
+    background: none;
+}
+
+.btn:hover {
+    background-image: url(../img/crossh.png);
+}
+
+.grille {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../img/grille2.png);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
