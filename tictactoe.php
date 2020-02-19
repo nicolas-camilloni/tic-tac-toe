@@ -18,6 +18,7 @@ if ( !isset($_SESSION["tour"]) ) {
     $choix = array(1, 2);
     shuffle($choix);
     $_SESSION["tour"] = $choix[0];
+    $_SESSION["tourall"] = 1;
 
 }
 
@@ -60,12 +61,16 @@ if ( $_SESSION["tour"] == 2 ) {
     if ( is_int($test) ) {
         $_SESSION["tab"][$test] = $signeia;
         $_SESSION["tour"] = 1;
+        $_SESSION["tourall"] += 1;
     }
 }
 
 elseif ( $_SESSION["tour"] == 1 ) {
     $game->gestionTourJoueur($signej);
+    $_SESSION["tourall"] += 1;
 }
+
+// echo $_SESSION["tourall"];
 
 $tab = $_SESSION["tab"];
 
