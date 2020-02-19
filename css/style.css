@@ -27,6 +27,15 @@ body {
     background-size: 100%;
 }
 
+.top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
 .red {
     color: #ff615f;
 }
@@ -112,4 +121,30 @@ p {
 .row {
     display: flex;
     flex-direction: row;
+}
+
+.btnindex {
+    margin: 40px 0 0 0;
+    background: none;
+    border: 4px solid white;
+    border-radius: 50px;
+    color: white;
+    height: 84px;
+    width: 200px;
+    font-family: "Comfortaa-VariableFont_wght";
+    font-size: 24px;
+    background-color: #3ec5f3;
+    background-image: linear-gradient(to right, #ff615f, rgba(0, 0, 0, 0));
+}
+
+.btnindex:hover {
+    background-color: #ff615f;
+    background-image: linear-gradient(to right, #3ec5f3, rgba(0, 0, 0, 0));
+    transition: background-color 0.25s ease-in-out;
+}
+
+.btnindex:not(:hover) {
+    background-color: #3ec5f3;
+    background-image: linear-gradient(to right, #ff615f, rgba(0, 0, 0, 0));
+    transition: background-color 0.25s ease-in-out;
 }

@@ -651,6 +651,112 @@ class Game {
             }
         }
     }
+
+        public function gestionTourJoueur1($signej1) {
+        if ( $_SESSION["tour"] == 1 && $this->winOk == false ) {
+            if ( $_SESSION["tab"][0] == 0 && isset( $_POST["1"]) ) {
+                echo "Ok";
+                $_SESSION["tab"][0] = $signej1;
+                $_SESSION["tour"] = 2;
+                echo $_SESSION["tab"][0];
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][1] == 0 && isset( $_POST["2"]) ) {
+                $_SESSION["tab"][1] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][2] == 0 && isset( $_POST["3"]) ) {
+                $_SESSION["tab"][2] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][3] == 0 && isset( $_POST["4"]) ) {
+                $_SESSION["tab"][3] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][4] == 0 && isset( $_POST["5"]) ) {
+                $_SESSION["tab"][4] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][5] == 0 && isset( $_POST["6"]) ) {
+                $_SESSION["tab"][5] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][6] == 0 && isset( $_POST["7"]) ) {
+                $_SESSION["tab"][6] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][7] == 0 && isset( $_POST["8"]) ) {
+                $_SESSION["tab"][7] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][8] == 0 && isset( $_POST["9"]) ) {
+                $_SESSION["tab"][8] = $signej1;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+        }
+    }
+
+
+public function gestionTourJoueur2($signej2) {
+        if ( $_SESSION["tour"] == 1 && $this->winOk == false ) {
+            if ( $_SESSION["tab"][0] == 0 && isset( $_POST["1"]) ) {
+                echo "Ok";
+                $_SESSION["tab"][0] = $signej2;
+                $_SESSION["tour"] = 2;
+                echo $_SESSION["tab"][0];
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][1] == 0 && isset( $_POST["2"]) ) {
+                $_SESSION["tab"][1] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][2] == 0 && isset( $_POST["3"]) ) {
+                $_SESSION["tab"][2] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][3] == 0 && isset( $_POST["4"]) ) {
+                $_SESSION["tab"][3] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][4] == 0 && isset( $_POST["5"]) ) {
+                $_SESSION["tab"][4] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][5] == 0 && isset( $_POST["6"]) ) {
+                $_SESSION["tab"][5] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][6] == 0 && isset( $_POST["7"]) ) {
+                $_SESSION["tab"][6] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][7] == 0 && isset( $_POST["8"]) ) {
+                $_SESSION["tab"][7] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+            if ( $_SESSION["tab"][8] == 0 && isset( $_POST["9"]) ) {
+                $_SESSION["tab"][8] = $signej2;
+                $_SESSION["tour"] = 2;
+                header("Location: pvp.php");
+            }
+        }
+    }
+
 }
 
 ?>
