@@ -107,6 +107,11 @@ $tab = $_SESSION["tab"];
         ?>
 </head>
 <body>
+    <header>
+        <form class="top" action="index.php" method="post">
+            <input class="btnindex" type="submit" value="ACCUEIL" name="restart">
+        </form>
+    </header>
     <main>
         <h1><span class="blue">TIC</span> <span class="red">TAC</span> <span class="blue">TOE</span></h1>
         <form class="grille" method="post" action="tictactoe.php">
