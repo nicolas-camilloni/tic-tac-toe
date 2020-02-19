@@ -11,8 +11,15 @@
             
 </head>
 <body>
-    <main>
-        
+    <main>      
+    	        <h1><span class="blue">Chosir</span> <span class="red">votre</span> <span class="blue">Mode</span></h1>
+                <form action="tictactoe.php" method="post">
+                    <input class="btnrestart" type="submit" value="P Vs IA" name="PVIA">
+                </form>
+                <form action="pvp.php" method="post">
+                    <input class="btnrestart" type="submit" value="P Vs P" name="PVP">
+                </form>
+
        
     </main>
 </body>
