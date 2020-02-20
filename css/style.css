@@ -52,7 +52,37 @@ h1 {
     margin: 10px;
     font-size: 64px;
     font-family: "Comfortaa-VariableFont_wght";
+    text-align: center;
+    width: 33%;
 	text-shadow: 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff, -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff;
+}
+
+.home {
+    height: 54px;
+    width: 54px;
+    margin-left: 14px;
+    background-image: url(../img/home.png);
+}
+
+.home:hover {
+    background-image: url(../img/homeh.png);
+    transition: background-image 0.25s ease-in-out;
+}
+
+.home:not(:hover) {
+    background-image: url(../img/home.png);
+    transition: background-image 0.25s ease-in-out;
+}
+
+.head {
+    width: 100%;
+    display : flex;
+    align-items: center;
+}
+
+.head article {
+    width: 33%;
+    height: 100%;
 }
 
 p {
@@ -147,4 +177,34 @@ p {
     background-color: #3ec5f3;
     background-image: linear-gradient(to right, #ff615f, rgba(0, 0, 0, 0));
     transition: background-color 0.25s ease-in-out;
+}
+
+.cformupload {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cformupload form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cformupload form label {
+    margin-bottom: 24px;
+    font-size: 44px;
+    color: black;
+	text-shadow: 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff, -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff;
+}
+
+.cformupload form input {
+    margin-bottom: 24px;
+}
+
+.cformupload form label {
+    font-size: 44px;
 }

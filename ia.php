@@ -412,49 +412,49 @@ class Game {
             //     }
             // }
             
-            if ( $_SESSION["case7point"] + $_SESSION["case2point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case7point"] + $_SESSION["case2point"] == 2 && $_SESSION["tab"][2] == 0 && $_SESSION["tab"][3] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][0] == 0 ) {
                     $_SESSION["gocheckcase"] = 1;
                 }
             }
 
-            if ( $_SESSION["case7point"] + $_SESSION["case6point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case7point"] + $_SESSION["case6point"] == 2 && $_SESSION["tab"][2] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][8] == 0 ) {
                     $_SESSION["gocheckcase"] = 9;
                 }
             }
 
-            if ( $_SESSION["case9point"] + $_SESSION["case4point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case9point"] + $_SESSION["case4point"] == 2 && $_SESSION["tab"][0] == 0 && $_SESSION["tab"][7] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][6] == 0 ) {
                     $_SESSION["gocheckcase"] = 7;
                 }
             }
 
-            if ( $_SESSION["case9point"] + $_SESSION["case2point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case9point"] + $_SESSION["case2point"] == 2 && $_SESSION["tab"][0] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][2] == 0 ) {
                     $_SESSION["gocheckcase"] = 3;
                 }
             }
 
-            if ( $_SESSION["case1point"] + $_SESSION["case6point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case1point"] + $_SESSION["case6point"] == 2 && $_SESSION["tab"][1] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][2] == 0 ) {
                     $_SESSION["gocheckcase"] = 3;
                 }
             }
 
-            if ( $_SESSION["case1point"] + $_SESSION["case8point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case1point"] + $_SESSION["case8point"] == 2 && $_SESSION["tab"][8] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][6] == 0 ) {
                     $_SESSION["gocheckcase"] = 7;
                 }
             }
 
-            if ( $_SESSION["case3point"] + $_SESSION["case4point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case3point"] + $_SESSION["case4point"] == 2 && $_SESSION["tab"][6] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][0] == 0 ) {
                     $_SESSION["gocheckcase"] = 1;
                 }
             }
 
-            if ( $_SESSION["case3point"] + $_SESSION["case8point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+            if ( $_SESSION["case3point"] + $_SESSION["case8point"] == 2 && $_SESSION["tab"][6] == 0 && $_SESSION["tab"][5] == 0 && $_SESSION["tourall"] <= 5 ) {
                 if ( $_SESSION["tab"][8] == 0 ) {
                     $_SESSION["gocheckcase"] = 9;
                 }
@@ -484,28 +484,40 @@ class Game {
                 }
             }
 
-            if ( $_SESSION["case1point"] + $_SESSION["case2point"] + $_SESSION["case3point"] + $_SESSION["case4point"] + $_SESSION["case5point"] + $_SESSION["case6point"] + $_SESSION["case7point"] + $_SESSION["case8point"] + $_SESSION["case9point"] == 1 && $_SESSION["tourall"] <= 5 ) {
-                if ( $_SESSION["case1point"] == 1 ) {
-                    if ( $_SESSION["tab"][8] == 0 ) {
-                        $_SESSION["gocheckcase"] = 9;
-                    }
-                }
-                if ( $_SESSION["case3point"] == 1 ) {
-                    if ( $_SESSION["tab"][6] == 0 ) {
-                        $_SESSION["gocheckcase"] = 7;
-                    }
-                }
-                if ( $_SESSION["case7point"] == 1 ) {
-                    if ( $_SESSION["tab"][2] == 0 ) {
-                        $_SESSION["gocheckcase"] = 3;
-                    }
-                }
-                if ( $_SESSION["case9point"] == 1 ) {
-                    if ( $_SESSION["tab"][0] == 0 ) {
-                        $_SESSION["gocheckcase"] = 1;
-                    }
+            if ( $_SESSION["case1point"] + $_SESSION["case9point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+                if ( $_SESSION["tab"][5] == 0 ) {
+                    $_SESSION["gocheckcase"] = 6;
                 }
             }
+
+            if ( $_SESSION["case3point"] + $_SESSION["case7point"] == 2 && $_SESSION["tourall"] <= 5 ) {
+                if ( $_SESSION["tab"][3] == 0 ) {
+                    $_SESSION["gocheckcase"] = 4;
+                }
+            }
+
+            // if ( $_SESSION["case1point"] + $_SESSION["case2point"] + $_SESSION["case3point"] + $_SESSION["case4point"] + $_SESSION["case5point"] + $_SESSION["case6point"] + $_SESSION["case7point"] + $_SESSION["case8point"] + $_SESSION["case9point"] == 1 && $_SESSION["tourall"] <= 5 ) {
+            //     if ( $_SESSION["case1point"] == 1 ) {
+            //         if ( $_SESSION["tab"][1] == 0 ) {
+            //             $_SESSION["gocheckcase"] = 2;
+            //         }
+            //     }
+            //     if ( $_SESSION["case3point"] == 1 ) {
+            //         if ( $_SESSION["tab"][5] == 0 ) {
+            //             $_SESSION["gocheckcase"] = 6;
+            //         }
+            //     }
+            //     if ( $_SESSION["case7point"] == 1 ) {
+            //         if ( $_SESSION["tab"][3] == 0 ) {
+            //             $_SESSION["gocheckcase"] = 4;
+            //         }
+            //     }
+            //     if ( $_SESSION["case9point"] == 1 ) {
+            //         if ( $_SESSION["tab"][7] == 0 ) {
+            //             $_SESSION["gocheckcase"] = 8;
+            //         }
+            //     }
+            // }
 
         }
 

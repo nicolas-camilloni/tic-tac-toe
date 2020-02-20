@@ -4,7 +4,7 @@ session_start();
 
 if ( isset($_POST["restart"]) ) {
     session_destroy();
-    header("Location: tictactoe.php");
+    header("Location: iavsia.php");
 }
 
 if ( !isset($_SESSION["tab"]) ) {
@@ -48,6 +48,7 @@ else {
 }
 
 include("ia.php");
+include("ia2.php");
 
 $game = new Game();
 $game->checkWin($signej, $signeia);
@@ -62,12 +63,18 @@ if ( $_SESSION["tour"] == 2 ) {
         $_SESSION["tab"][$test] = $signeia;
         $_SESSION["tour"] = 1;
         $_SESSION["tourall"] += 1;
+        header("Location: iavsia.php");
     }
 }
 
-elseif ( $_SESSION["tour"] == 1 ) {
-    $game->gestionTourJoueur($signej);
-    $_SESSION["tourall"] += 1;
+elseif ( $_SESSION["tour"] == 1 && $game->checkWin($signej, $signeia)[0] == false) {
+    $test = ia2($tab, $signej);
+    if ( is_int($test) ) {
+        $_SESSION["tab"][$test] = $signej;
+        $_SESSION["tour"] = 2;
+        $_SESSION["tourall"] += 1;
+        header("Location: iavsia.php");
+    }
 }
 
 // echo $_SESSION["tourall"];
@@ -109,7 +116,7 @@ $tab = $_SESSION["tab"];
 <body>
     <main>
         <section class="head"><article><a href="index.php"><div class="home"></div></a></article><h1><span class="blue">TIC</span> <span class="red">TAC</span> <span class="blue">TOE</span></h1><article></article></section>
-        <form class="grille" method="post" action="tictactoe.php">
+        <form class="grille" method="post" action="iavsia.php">
             <section class="row">
             <?php
             if ( $tab[0] != 0 ) {
@@ -256,9 +263,9 @@ $tab = $_SESSION["tab"];
         <?php
         if ( $game->checkWin($signej, $signeia)[0] == true ) {
             if ( $game->checkWin($signej, $signeia)[1] == "$signej" ) {
-                echo "<p class=\"blue\">Vous avez gagné !</p>";
+                echo "<p class=\"blue\">Votre IA gagne</p>";
                 ?>
-                <form action="tictactoe.php" method="post">
+                <form action="iavsia.php" method="post">
                     <input class="btnrestart" type="submit" value="Recommencer" name="restart">
                 </form>
                 <?php
@@ -266,15 +273,15 @@ $tab = $_SESSION["tab"];
             elseif ( $game->checkWin($signej, $signeia)[1] == "draw" ) {
                 echo "<p class=\"orange\">EGALITE</p>";
                 ?>
-                <form action="tictactoe.php" method="post">
+                <form action="iavsia.php" method="post">
                     <input class="btnrestart" type="submit" value="Recommencer" name="restart">
                 </form>
                 <?php
             }
             else {
-                echo "<p class=\"red\">PERDU</p>";
+                echo "<p class=\"red\">L'IA NT gagne</p>";
                 ?>
-                <form action="tictactoe.php" method="post">
+                <form action="iavsia.php" method="post">
                     <input class="btnrestart" type="submit" value="Recommencer" name="restart">
                 </form>
                 <?php

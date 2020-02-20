@@ -67,7 +67,6 @@ elseif ( $_SESSION["tour"] == 1 ) {
 }
 
 $tab = $_SESSION["tab"];
-echo $_SESSION["tour"];
 
 // var_dump($test);
 // var_dump($_SESSION["tour"]);
@@ -112,14 +111,9 @@ echo $_SESSION["tour"];
         ?>
 </head>
 <body>
-    <header>
-        <form class="top" action="index.php" method="post">
-            <input class="btnindex" type="submit" value="ACCUEIL" name="restart">
-        </form>
-    </header>
     <main>
-        <h1><span class="blue">TIC</span> <span class="red">TAC</span> <span class="blue">TOE</span></h1>
-        <form class="grille" method="post" action="pvp.php">
+    <section class="head"><article><a href="index.php"><div class="home"></div></a></article><h1><span class="blue">TIC</span> <span class="red">TAC</span> <span class="blue">TOE</span></h1><article></article></section>
+    <form class="grille" method="post" action="pvp.php">
             <section class="row">
             <?php
             if ( $tab[0] != 0 ) {
@@ -267,7 +261,7 @@ echo $_SESSION["tour"];
         <?php
         if ( $game->checkWin($signej2, $signej1)[0] == true ) {
             if ( $game->checkWin($signej2, $signej1)[1] == "$signej2" ) {
-                echo "<p class=\"blue\">Vous avez gagné !</p>";
+                echo "<p class=\"blue\">Les $symbolej2 gagne !</p>";
                 ?>
                 <form action="pvp.php" method="post">
                     <input class="btnrestart" type="submit" value="Recommencer" name="restart">
@@ -283,7 +277,7 @@ echo $_SESSION["tour"];
                 <?php
             }
             else {
-                echo "<p class=\"red\">PERDU</p>";
+                echo "<p class=\"red\">Les $symbolej1 gagne !</p>";
                 ?>
                 <form action="pvp.php" method="post">
                     <input class="btnrestart" type="submit" value="Recommencer" name="restart">

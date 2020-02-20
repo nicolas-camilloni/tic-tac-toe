@@ -12,12 +12,15 @@
 </head>
 <body>
     <main>      
-    	        <h1><span class="blue">Chosir</span> <span class="red">votre</span> <span class="blue">Mode</span></h1>
+    	        <h1><span class="blue">Choisir</span> <span class="red">votre</span> <span class="blue">mode</span></h1>
                 <form action="tictactoe.php" method="post">
-                    <input class="btnrestart" type="submit" value="P Vs IA" name="restart">
+                    <input class="btnrestart" type="submit" value="Joueur VS IA" name="restart">
                 </form>
                 <form action="pvp.php" method="post">
-                    <input class="btnrestart" type="submit" value="P Vs P" name="restart">
+                    <input class="btnrestart" type="submit" value="Joueur VS Joueur" name="restart">
+                </form>
+                <form action="uploadyouria.php" method="post">
+                    <input class="btnrestart" type="submit" value="IA VS IA" name="restart">
                 </form>
 
        
