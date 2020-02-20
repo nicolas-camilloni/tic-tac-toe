@@ -34,16 +34,21 @@ $signej1 = $_SESSION["signej1"];
 
 if ( $signej1 == 1 ) {
     $symbolej1 = "x";
+    $symbolej2 = "o";
 }
 else {
     $symbolej1 = "o";
+    $symbolej2 = "x";
 }
 
 if ( $signej2 == 1 ) {
     $symbolej2 = "x";
+    $symbolej1 = "o";
 }
 else {
     $symbolej2 = "o";
+    $symbolej1 = "x";
+
 }
 
 include("ia.php");
@@ -62,6 +67,7 @@ elseif ( $_SESSION["tour"] == 1 ) {
 }
 
 $tab = $_SESSION["tab"];
+echo $_SESSION["tour"];
 
 // var_dump($test);
 // var_dump($_SESSION["tour"]);
@@ -83,12 +89,22 @@ $tab = $_SESSION["tab"];
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/style.css">
     <?php
-        if ( $symbolej2 == "x" ) {
+        if ( $symbolej2 == "x"  && $_SESSION["tour"] == 1 ) {
             ?>
             <link rel="stylesheet" href="css/croix.css">
             <?php
         }
-        if ( $symbolej2 == "o" ) {
+        if ( $symbolej2 == "o"  && $_SESSION["tour"] == 1 ) {
+            ?>
+            <link rel="stylesheet" href="css/rond.css">
+            <?php
+        }
+        if ( $symbolej1 == "x"  && $_SESSION["tour"] == 2 ) {
+            ?>
+            <link rel="stylesheet" href="css/croix.css">
+            <?php
+        }
+        if ( $symbolej1 == "o"  && $_SESSION["tour"] == 2 ) {
             ?>
             <link rel="stylesheet" href="css/rond.css">
             <?php
